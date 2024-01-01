@@ -38,7 +38,7 @@ def sp_dequeue(Q) -> x*:
   for q' in Q':
     if q' is not empty:
       // retrieve the next packet in FIFO manner
-      x* = q'.poll()
+      x* = q'.pop()
       return x*
   // all queues are empty, no packet to transmit
   return null
