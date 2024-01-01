@@ -34,9 +34,12 @@ def sp_enqueue(Q, C, x):
 
 def sp_dequeue(Q) -> x*:
   Q' = sort Q by descending q.p
+  // start from more prioritized queue
   for q' in Q':
     if q' is not empty:
+      // retrieve the next packet in FIFO manner
       x* = q'.poll()
       return x*
+  // all queues are empty, no packet to transmit
   return null
 ```
