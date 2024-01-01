@@ -25,19 +25,19 @@ Parameters:
   1. List of packets X = [x0, x1, ...].
   2. Set of QoS queues Q = {q0, q1, ...}, where q = {priority p, buffer size s}.
   3. Classifier C: x -> q to map packets to QoS queues.
-  4. Output queue Y.
+  4. Output packet x* for transmission.
 
-def sp_in_queue(Q, C, X) -> Q:
+def sp_in_queue(Q, C, X):
   for x in X:
     q = C(x)
     if q.s is enough to hold x:
       q.push(x)
-  return Q
 
-def sp_out_queue(Q) -> Y:
+def sp_out_queue(Q) -> x*:
   Q' = sort Q by descending q.p
   for q' in Q':
-    while q' is not empty:
-      x' = q'.poll()
-      Y.push(x')
+    if q' is not empty:
+      x* = q'.poll()
+      return x*
+  return null
 ```
