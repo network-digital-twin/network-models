@@ -58,13 +58,16 @@ def wfq_enqueue(Q, C, R, x):
   q = C(x)
   if q.s is enough to hold x:
     q.push(x)
-    // update time values for packet and queue
-    x.s = max(time.now(), q.f)
+    // calcuate expected data rates and update time values
     q.r = q.w / sum({q'.w for q' in Q}) * R
-    x.f = x.s + x.l / q.r
-    q.f = x.f
+    wfq_update_time(x, q)
 
-def sp_dequeue(Q) -> x*:
+def wfq_update_time(x, q):
+  x.s = max(time.now(), q.f)
+  x.f = x.s + x.l / q.r
+  q.f = x.f
+
+def wfq_dequeue(Q) -> x*:
   if every q in Q is empty:
     // no packet to transmit
     return null
