@@ -27,11 +27,10 @@ Parameters:
   3. Classifier C: x -> q to map packets to QoS queues.
   4. Output packet x* for transmission.
 
-def sp_enqueue(Q, C, X):
-  for x in X:
-    q = C(x)
-    if q.s is enough to hold x:
-      q.push(x)
+def sp_enqueue(Q, C, x):
+  q = C(x)
+  if q.s is enough to hold x:
+    q.push(x)
 
 def sp_dequeue(Q) -> x*:
   Q' = sort Q by descending q.p
