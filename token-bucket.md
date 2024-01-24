@@ -70,6 +70,7 @@ def srTCM(packet):
 			T_c -= packet.size
 		elif(packet.size <= T_e):
 			packet.color = "yellow"
+			T_e -= packet.size
 		else: 
 			packet.color = "red"  # only mark the packet, do not decrease tokens
 	else:  # color-aware mode
